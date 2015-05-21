@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script language="javascript" type="text/javascript" src="d3.js"></script>
+		<script language="javascript" type="text/javascript" src="d3.min.js"></script>
+		<style>
+			#container
+			{
+				border-style: solid;
+				border-width: 1px;
+				margin: auto;
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+			}
+		</style>
+	</head>
+	<body onresize="resetDot()" style="margin: 0;">
+		<script>
+			var speedMult = 1;
+			var size = 75; //in vmin
+		
+			var body = document.getElementsByTagName("BODY")[0];
+			
+			var container = document.createElement("div");
+			container.style.height = "calc("+size+"vmin - 2px)";
+			container.style.width = "calc("+size+"vmin - 2px)";
+			container.id = "container";
+			body.appendChild(container);
+			
+			var dot = document.createElement("div");
+			//dot.style.backgroundColor = "black";
+			//dot.style.height = "10px";
+			//dot.style.width = "10px";
+     dot.innerHTML = "<img src='images/swivel.gif' />"
+			container.appendChild(dot);
+			
+			var xVelocity = randomSpeed();
+			var yVelocity = randomSpeed();
+			
+			var xPosition = 0;
+			var yPosition = 0;
+			
+			function moveDot()
+			{
+				if(xPosition > container.clientHeight - dot.clientHeight)
+				{
+					xVelocity = -randomSpeed();
+				}
+				else if(xPosition < 0)
+				{
+					xVelocity = randomSpeed();
+				}
+				
+				if(yPosition > container.clientHeight - dot.clientHeight)
+				{
+					yVelocity = -randomSpeed();
+				}
+				else if(yPosition < 0)
+				{
+					yVelocity = randomSpeed();
+				}
+			
+				xPosition += speedMult * xVelocity;
+				yPosition += speedMult * yVelocity;
+				
+				dot.style.marginLeft = xPosition + "px";
+				dot.style.marginTop = yPosition + "px";
+			}
+			
+			function randomSpeed()
+			{
+				return .5+(Math.random());
+			}
+			
+			function resetDot()
+			{
+				xVelocity = randomSpeed();
+				yVelocity = randomSpeed();
+			
+				xPosition = 0;
+				yPosition = 0;
+			}
+			
+			setInterval(moveDot, 1);
+		</script>
+	</body>
+</html>
