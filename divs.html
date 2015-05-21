@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	
+	<head>
+		<style>
+			body
+			{
+				background-image: url("images/rainbow_doge.png")
+			}
+		
+			.animateRight
+			{
+				padding: 0px;
+				text-align: center;
+				background-color: white;
+				height: auto;
+				width: 100px;
+				-webkit-animation: testAnimation1 1s linear infinite alternate;
+			}
+
+			.animateLeft
+			{
+				padding: 0px;
+				text-align: center;
+				background-color: black;
+				height: auto;
+				width: 300px;
+				-webkit-animation: testAnimation2 1s linear infinite alternate;
+			}
+
+			@-webkit-keyframes testAnimation1
+			{
+				0%
+				{
+					margin-left: 0%;
+					background-color: white;
+				}
+				100%
+				{
+					margin-left: calc(100% - 100px);
+					background-color: black;
+				}
+			}
+
+			@-webkit-keyframes testAnimation2
+			{
+				0%
+				{
+					margin-left: calc(100% - 300px);
+					background-color: white;
+				}
+				100%
+				{
+					margin-left: 0%;
+					background-color: black;
+				}
+			}
+		</style>
+	</head>
+	
+	<body>
+		<div id="container" style="left: 50%; top: 50%;"></div>
+		<img id="hitmarker" style="position: absolute;" src="images/hitmarker.png"></img>
+		<script>
+			for(var i=0; i<5; i++)
+			{
+				var tempDiv = document.createElement("div");
+				if(i%2 == 0)
+				{
+					tempDiv.className = "animateRight";
+					tempDiv.innerHTML = "<img src='images/swivel.gif'></img>";
+				}
+				else
+				{
+					tempDiv.className = "animateLeft";
+					tempDiv.innerHTML = "<img src='images/doge.gif'></img>";
+				}
+				document.getElementById("container").appendChild(tempDiv);
+			}
+			function refresh()
+			{
+				var hitmarker = document.getElementById("hitmarker");
+				
+				hitmarker.style.top = "calc("+(Math.random() * 100) + "% - 50px"+")";
+				
+				hitmarker.style.left = "calc("+(Math.random() * 100) + "% - 50px"+")";
+					
+				setTimeout(refresh, 50);
+			}
+			refresh();
+		</script>
+	</body>
+
+</html>

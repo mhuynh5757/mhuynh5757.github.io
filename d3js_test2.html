@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<script language="javascript" type="text/javascript" src="d3.js"></script>
+		<script language="javascript" type="text/javascript" src="d3.min.js"></script>
+	</head>
+	
+	<body>
+		<h1 style="text-align: center;">Average Age of DOTA 2 Players</h1>
+		
+		<svg id="chart" width="100%" height="750px"></svg>
+		
+		<script>
+			var data = [4, 22, 30, 29, 12, 3];
+			var labels = ["13-15 Years: ", "16-18 Years: ", "19-21 Years: ", "22-25 Years: ", "26-30 Years: ", "31-40 Years: "];
+
+			var rect = d3.select("#chart").node().getBoundingClientRect();
+			
+			var graphScale = d3.scale.linear()
+				.domain([0, d3.max(data)])
+				.range([0, rect.width/10]);
+
+			var xPos = graphScale(data[0]);
+
+			var chart = d3.select("#chart");
+			chart.selectAll("circle")
+				.data(data)
+			.enter().append("circle")
+				.attr("cx", function(d, i) { xPos += d; if(i>0) { xPos += data[i-1] + 5 }; return graphScale(xPos); })
+				.attr("cy", "300px" )
+				.attr("r", 0)
+				.transition().duration(1000)
+					.attr("r", function(d, i){ return graphScale(d); });
+
+			xPos = graphScale(data[0]);
+
+			chart.selectAll("text")
+				.data(data)
+			.enter().append("text")
+				.attr("x", function(d, i) { xPos += d; if(i>0) { xPos += data[i-1] + 5 }; return graphScale(xPos); })
+				.attr("y", function(d) { return 350 + graphScale(d); })
+				.attr("text-anchor", "middle")
+				.attr("font-size", 0)
+				.text(function(d, i) { return labels[i] + d + "%"})
+				.transition().duration(1000)
+					.attr("font-size", 20);
+		</script>
+	</body>
+	
+</html>

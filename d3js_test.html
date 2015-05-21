@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<script language="javascript" type="text/javascript" src="d3.js"></script>
+		<script language="javascript" type="text/javascript" src="d3.min.js"></script>
+		<style>
+			div.box
+			{
+				float: left;
+				
+				width: 100px;
+				height: 100px;
+				
+				margin-top: 10px;
+				margin-right: 10px;
+			}
+		</style>
+		<script>
+			d3.selection.prototype.first = function()
+			{
+				return d3.select(this[0][0]);
+			};
+			d3.selection.prototype.last = function()
+			{
+				var last = this.size() - 1;
+				return d3.select(this[0][last]);
+			};
+			function removeBoxes()
+			{
+				if(d3.select("#boxes").node().value == 0)
+				{
+					d3.selectAll("div.box").remove();
+				}
+				else
+				{
+					for(var i=0; i<d3.select("#boxes").node().value; i++)
+					{
+						d3.selectAll("div.box").last().remove();
+					}
+				}
+			}
+			function setColor()
+			{
+				d3.selectAll("div.box").style("background", d3.select("#selectedColor").node().value);
+			}
+			function addBoxes()
+			{
+				var boxes = d3.select("#boxes").node().value;
+				
+				for(var i=0; i<boxes; i++)
+				{
+					var tempDiv = parent.document.createElement("div");
+					tempDiv.setAttribute("class", "box");
+					tempDiv.style.background = d3.select("#selectedColor").node().value;
+		
+					d3.select("#container").node().appendChild(tempDiv);
+				}
+			}
+			function randomizeColors()
+			{
+				d3.selectAll("div.box").style("background",
+				function()
+				{
+					return "hsl(" + Math.random() * 360 + ",100%,50%)";
+				});
+			}
+			function autoRandomize()
+			{
+				if(d3.select("#timerBox").node().checked == true)
+				{
+					d3.select("#timeDelay").node().disabled = true;
+					randomizeColors();
+					setTimeout(
+					function()
+					{
+						autoRandomize();
+					}, d3.select("#timeDelay").node().value);
+				}
+				else
+				{
+					d3.select("#timeDelay").node().disabled = false;
+				}
+			}
+		</script>
+	</head>
+	
+	<body>
+		<div style="text-align: center; margin-top: 50px; margin-bottom: 40px;">
+			<input autofocus id="boxes" value="1" size="1"></input>
+			<button onclick="addBoxes()">Add Box(es)</button>
+			<button onclick="removeBoxes()">Remove Box(es) (Use 0 for all)</button>
+			<select id="selectedColor">
+				<option value="blue">Blue</option>
+				<option value="red">Red</option>
+				<option value="green">Green</option>
+				<option value="yellow">Yellow</option>
+				<option value="white">White</option>
+			</select>
+			<button onclick="setColor()">Set All to Color</button>
+			<button onclick="randomizeColors()">Randomize Colors</button>
+			<input id="timerBox" type="checkbox" onchange="autoRandomize()">Randomize on Timer (in Milliseconds)</input>
+			<input autofocus id="timeDelay" value="1000" size="5"></input>
+		</div>
+		<div id="container"></div>
+	</body>
+	
+</html>
