@@ -7,10 +7,11 @@
 		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 		<title>Home</title>
 		
-		<link rel="shortcut icon" href="../images/favicon.png"/>
+		<link rel="shortcut icon" href="images/favicon.png"/>
 
 		<!-- Bootstrap -->
-		<link href="../css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/addon.css" rel="stylesheet">
 
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -44,27 +45,51 @@
 		</nav>
 		
 		<div class="container">
-			<div class="jumbotron">
-				<h1>Welcome to my Pride and Prejudice review website!</h1>
-				<p>Here you will find literary terms, an in depth analysis, and a blog page concerning the novel. Feel free to look around!</p>
+			<div class="col-md-8">
+				<div class="bgContainer">
+					<h1 class="text-center">Welcome to my Pride and Prejudice review website!</h1>
+					<h3 class="text-center">Here you will find literary terms, an in depth analysis, and a blog page concerning the novel.<br/>Feel free to look around!</h3>
+				</div>
+				<div class="bgContainer">
+					<h2>Info about the book:</h2>
+					<ul>
+						<li><h3>Pride and Prejudice was written by Jane Austen in 1813.</h3></li>
+						<li><h3>It is a romantic satire, meant to poke fun at the problems of 1813 society.</h3></li>
+						<li><h3>There have been many adaptations, including most recently a 2005 film adaptation.</h3></li>
+					</ul>
+				</div>
 			</div>
+			<div class="col-md-4">
+				<div class="bgContainer">
+					<img class="img-responsive" src="images/cover.jpg" style="margin-left: auto; margin-right: auto;"/>
+				</div>
+			</div>
+		</div>
+		
+		<div class="container">
 			<div class="row">
 				<div class="col-md-4">
-					<p class="text-center"><a class="btn btn-primary btn-lg" href="lit_terms.html" role="button">Literary Terms</a></p>
+					<div class="bgContainer">
+						<p class="text-center"><img src="images/lit_terms.jpg" class="img-responsive"/><br/><br/><a class="btn btn-primary btn-lg" href="lit_terms.html" role="button">Literary Terms</a></p>
+					</div>
 				</div>
 				<div class="col-md-4">
-					<p class="text-center"><a class="btn btn-primary btn-lg" href="analysis.html" role="button">Analysis</a></p>
+					<div class="bgContainer">
+						<p class="text-center"><img src="images/analysis.jpg" class="img-responsive"/><br/><br/><a class="btn btn-primary btn-lg" href="analysis.html" role="button">Analysis</a></p>
+					</div>
 				</div>
 				<div class="col-md-4">
-					<p class="text-center"><a class="btn btn-primary btn-lg" href="blogs.html" role="button">Blogs</a></p>
+					<div class="bgContainer">
+						<p class="text-center"><img src="images/blogs.jpg" class="img-responsive"/><br/><br/><a class="btn btn-primary btn-lg" href="blogs.html" role="button">Blogs</a></p>
+					</div>
 				</div>
 			</div>
-			<p class="text-right small">This non-profit website was created by Michael Huynh for educational purposes<br/>Made for Mrs. Bradley's 3rd Period CP English 12 Class on May 22nd, 2015</p>
+			<p class="text-right small" style="color: white;"><br/>This non-profit website was created by Michael Huynh for educational purposes<br/>Made for Mrs. Bradley's 3rd Period CP English 12 Class on May 22nd, 2015</p>
 		</div>
 
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script src="../js/jquery.min.js"></script>
+		<script src="js/jquery.min.js"></script>
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
-		<script src="../js/bootstrap.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
 	</body>
 </html>
