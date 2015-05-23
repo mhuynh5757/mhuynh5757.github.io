@@ -1,25 +1,10 @@
 body
 {
 	background-image: url("../images/background.jpg");
+	background-attachment: fixed;
 }
 
-.bgContainer
+.text-indent
 {
-	margin-top: 0;
-	margin-bottom: 20px;
-	margin-left: auto;
-	margin-right: auto;
-	background-color: white;
-	padding: 20px;
-	border-radius: 6px;
-}
-
-.text-indent-4
-{
-	text-indent: 40px;
-}
-
-h1, h2, h3, h4, h5, h6
-{
-	margin-top: 11.5px;
+	text-indent: 4em;
 }
