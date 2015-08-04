@@ -1,0 +1,14 @@
+.spacer
+{
+	margin-bottom: 1em;
+}
+
+.panel
+{
+	background-color: white;
+}
+
+body
+{
+	background-image: url("../img/bg.jpg");
+}

@@ -1,0 +1,33 @@
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox fx:controller="ChatClient.StartupController"
+      xmlns:fx="http://javafx.com/fxml">
+    <padding>
+        <Insets top="5" bottom="10" right="10" left="10"/>
+    </padding>
+    <children>
+        <Label text="Name:" minWidth="175"/>
+        <TextField fx:id="nameInput" onAction="#connectToServer">
+            <VBox.margin>
+                <Insets bottom="5"/>
+            </VBox.margin>
+        </TextField>
+        <Label text="Hostname:"/>
+        <TextField fx:id="hostnameInput" onAction="#connectToServer">
+            <VBox.margin>
+                <Insets bottom="5"/>
+            </VBox.margin>
+        </TextField>
+        <Label text="Port:"/>
+        <TextField fx:id="portInput" onAction="#connectToServer">
+            <VBox.margin>
+                <Insets bottom="10"/>
+            </VBox.margin>
+        </TextField>
+        <HBox alignment="CENTER">
+            <Button text="Connect" onAction="#connectToServer"/>
+        </HBox>
+    </children>
+</VBox>

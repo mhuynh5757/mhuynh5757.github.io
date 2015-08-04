@@ -1,0 +1,19 @@
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.geometry.Insets?>
+
+<VBox fx:controller="ChatServer.ServerController"
+      xmlns:fx="http://javafx.com/fxml">
+    <padding>
+        <Insets top="5" right="10" bottom="10" left="10"/>
+    </padding>
+    <children>
+        <Label text="Chat Log:">
+            <VBox.margin>
+                <Insets bottom="5"/>
+            </VBox.margin>
+        </Label>
+        <TextArea fx:id="chatLog" VBox.vgrow="ALWAYS" editable="false"/>
+    </children>
+</VBox>
